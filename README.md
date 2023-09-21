@@ -17,7 +17,7 @@ Welcome to Chikara Backend repository. This repository contains the backend code
 - **Carbon Credits Accumulation**: Displays the total number of carbon credits earned based on emission limits and reductions.
 
 ## Getting Started
-- To set up and run the Nexus Interface Unit Backend on your local development environment,
+- To set up and run the Backend on your local development environment,
 Follow these steps:
 1. Begin by cloning this repository to your local machine using the git clone command.
 ```
