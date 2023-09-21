@@ -17,30 +17,61 @@ Welcome to Chikara Backend repository. This repository contains the backend code
 - **Carbon Credits Accumulation**: Displays the total number of carbon credits earned based on emission limits and reductions.
 
 ## Getting Started
-
-1. Clone the repository to your local machine:
-
-```bash
-git clone https://github.com/akirachix/Chikara-Backend.git
+- To set up and run the Nexus Interface Unit Backend on your local development environment,
+Follow these steps:
+1. Begin by cloning this repository to your local machine using the git clone command.
 ```
-
-2. Install the required dependencies:
-
-```bash
-npm install
+https://github.com/akirachix/Chikara-Backend.git
 ```
-
-3. Set up the environment variables:
-   - Create a `.env` file based on the provided `.env.example` template.
-   - Add necessary environment variables (e.g., database connection details, API keys).
-
-4. Set up the database:
-   - Create and configure a database according to the specifications in the `.env` file.
-
-5. Run the server:
-
-```bash
-npm start
+2. Navigate to the project directory
+```
+cd Chikara-Backend
+```
+3. Install the required dependencies. We recommend using a virtual environment for this step.
+```
+python3 -m venv venv
+```
+4. Activate the virtual environment using:
+```
+source venv/bin/activate
+```
+5.  Install Project Dependencies using:
+```
+pip install -r requirements.txt
+```
+6. Check the installed dependancies using:
+```
+pip freeze
+```
+7.  Install Psycopg2
+```
+pip install psycopg2
+```
+8.  Install Psycopg2-binary
+ ```
+pip install psycopg2-binary
+```
+9. Access PostgreSQL Database Console as "postgres" User
+```
+sudo -u postgres psql
+```
+10. Create the Database, User, and password in Postgres
+11. Grant all privileges on the database to the user created.Use:
+```
+GRANT ALL PRIVILEGES ON DATABASE 'database_name' to 'database_user'
+```
+12. Make migrations using:
+```
+python3 manage.py makemigrations
+```
+13. Migrate using :
+```
+python3 manage.py migrate
+```
+14. Runserver using:
+ ```
+python3 manage.py runserver
+```
 ```
 
 ## Usage
