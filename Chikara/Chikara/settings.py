@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'limit',
 ]
 
 MIDDLEWARE = [
@@ -74,16 +76,21 @@ WSGI_APPLICATION = 'Chikara.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 import os
+
 DATABASES = {
-    'default': {
+     'default': {
         'ENGINE': os.environ.get('DB_ENGINE'),
         'NAME': os.environ.get('DB_NAME'),
         'USER': os.environ.get('DB_USER'),
         'PASSWORD': os.environ.get('DB_PASSWORD'),
         'HOST': os.environ.get('DB_HOST'),
         'PORT': os.environ.get('DB_PORT'),
-    }
-} 
+    },
+     'test': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'ecobasi',
+    },
+}
 
 
 # Password validation
