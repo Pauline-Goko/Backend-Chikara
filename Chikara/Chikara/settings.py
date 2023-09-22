@@ -36,6 +36,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'carbon_credits',
+
     'rest_framework',
     'vehicles',
     'limit',
@@ -43,6 +46,7 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'rest_framework.authtoken',
     'registration'
+
 
 ]
 
