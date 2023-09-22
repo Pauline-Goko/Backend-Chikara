@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from limit.models import Limit
 from .serializers import LimitSerializers
 from rest_framework.response import Response
@@ -13,7 +12,7 @@ class LimitViewList(APIView):
         limit = Limit.objects.all()
         serializer = LimitSerializers(limit, many=True)
         return Response(serializer.data)
-    
+
     def post(self, request):
         serializer = LimitSerializers(data=request.data)
         if serializer.is_valid():

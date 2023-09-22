@@ -1,8 +1,4 @@
 from django.db import models
-from datetime import date
-
-# Create your models here.
-
 
 
 class Limit(models.Model):
@@ -12,6 +8,5 @@ class Limit(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
 
-    def __str__(self):
-        return f"The emission limit for ${self.duration} is ${self.emission_limit}"
-        
+def __str__(self):
+    return f"The emission limit for ${self.duration} is ${self.emission_limit}"
