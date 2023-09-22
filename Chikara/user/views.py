@@ -73,23 +73,6 @@ def user_login_view(request):
                             status=status.HTTP_401_UNAUTHORIZED)
 
 
-# @api_view(['POST'])
-# def user_logout_view(request):
-#     if request.method == 'POST':
-#         logout(request)
-#         return Response({'message': 'Successfully logged out.'}, status=status.HTTP_200_OK)
-
-# class UserLoginView(APIView):
-#     def post(self, request):
-#         username = request.data.get('username')
-#         password = request.data.get('password')
-#         try:
-#             a = User.objects.get(username=username, password=password)
-#             return Response({'message': 'Login successful'}, status=status.HTTP_200_OK)
-#         except User.DoesNotExist:
-#             return Response({'message': 'Invalid username or password'}, status=status.HTTP_401_UNAUTHORIZED)
-
-
 @api_view(['POST'])
 def user_registration_view(request):
     if request.method == 'POST':

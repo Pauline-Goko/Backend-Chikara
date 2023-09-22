@@ -9,7 +9,6 @@ class User(AbstractUser):
     phone_number = PhoneNumberField()
     company_id = models.PositiveIntegerField(default=1)
     email = models.EmailField(unique=True)
-    confirm_password = models.CharField(max_length=128)
     date_created = models.DateTimeField(timezone.now(), null=True)
     groups = models.ManyToManyField(
         'auth.Group',

@@ -9,7 +9,6 @@ class UserTest(TestCase):
             username='testuser',
             phone_number='+1234567890',
             password='some_password',
-            confirm_password='some_password',
             email='test@example.com',
             date_created=timezone.now())
 
