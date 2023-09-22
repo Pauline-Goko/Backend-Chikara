@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -37,10 +36,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
+
+    'carbon_credits',
+    'rest_framework_swagger',     
+    'rest_framework',            
+    'drf_yasg',
     'vehicles',
     'limit',
     'emissionsdata',
+    'user',
+    'rest_framework.authtoken',
+    
+    'phonenumber_field' 
+
 
 ]
 
@@ -51,10 +59,15 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware'
 ]
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend'
+]
 ROOT_URLCONF = 'Chikara.urls'
+AUTH_USER_MODEL = 'user.User'
+REST_FRAMEWORK = {'DEFAULT_AUTHENTICATION_CLASSES': ['rest_framework.authentication.TokenAuthentication']}
 
 TEMPLATES = [
     {
@@ -83,9 +96,9 @@ WSGI_APPLICATION = 'Chikara.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ecobasigrp',
-        'USER': 'chikara',
-        'PASSWORD': 'chikara',
+        'NAME': 'ecobasi',
+        'USER': 'chikaras',
+        'PASSWORD': '123456',
         'HOST': 'localhost',
         'PORT': '',
     }
