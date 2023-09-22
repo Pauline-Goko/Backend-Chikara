@@ -1,8 +1,8 @@
-# # urls.py in your app's directory
-# from django.urls import path
-# from .views import calculate_credit_earned, get_carbon_credits
+from django.urls import path
+from . import views
 
-# urlpatterns = [
-#     path('calculate-credits/', calculate_credit_earned, name='calculate_credit_earned'),
-#     path('get-credits/', get_carbon_credits, name='get_carbon_credits'),
-# ]
+urlpatterns = [
+    path('credits/', views.CarbonCreditsList.as_view(), name='carbon-credits-list'),
+    path('carbon-credits/<int:pk>/', views.CarbonCreditsDetail.as_view(), name='carbon-credits-detail'),
+    path('carbon-credit/', views.CalculateLastCarbonCredit.as_view(), name='calculate-last-carbon-credit'),
+]
