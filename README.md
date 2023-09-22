@@ -43,23 +43,6 @@ pip install -r requirements.txt
 ```
 pip freeze
 ```
-7.  Install Psycopg2
-```
-pip install psycopg2
-```
-8.  Install Psycopg2-binary
- ```
-pip install psycopg2-binary
-```
-9. Access PostgreSQL Database Console as "postgres" User
-```
-sudo -u postgres psql
-```
-10. Create the Database, User, and password in Postgres
-11. Grant all privileges on the database to the user created.Use:
-```
-GRANT ALL PRIVILEGES ON DATABASE 'database_name' to 'database_user'
-```
 12. Make migrations using:
 ```
 python3 manage.py makemigrations
