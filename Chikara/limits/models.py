@@ -7,5 +7,5 @@ class EmissionCap(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     
     def __str__(self):
-        duration_str = str(self.duration)
+        
         return f"The emission limit for {self.duration} is {self.emission_limit}"
