@@ -36,7 +36,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'carbon_credits',
     'rest_framework_swagger',     
     'rest_framework',            
@@ -46,7 +45,6 @@ INSTALLED_APPS = [
     'emissionsdata',
     'user',
     'rest_framework.authtoken',
-    
     'phonenumber_field' 
 
 
@@ -91,17 +89,21 @@ WSGI_APPLICATION = 'Chikara.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-
+import os
 
 DATABASES = {
-    'default': {
+     'default': {
+        'ENGINE': os.environ.get('DB_ENGINE'),
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),
+        'PORT': os.environ.get('DB_PORT'),
+    },
+     'test': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'ecobasi',
-        'USER': 'chikaras',
-        'PASSWORD': '123456',
-        'HOST': 'localhost',
-        'PORT': '',
-    }
+    },
 }
 
 
