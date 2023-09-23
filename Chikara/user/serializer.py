@@ -8,6 +8,7 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ['username', 'email', 'phone_number', 'password', 'email']
         extra_kwargs = {'password': {'write_only': True}}
+
     def create(self, validated_data):
         confirm_password = validated_data.pop('confirm_password', None)
         if confirm_password and validated_data['password'] != confirm_password:
@@ -15,4 +16,8 @@ class UserSerializer(serializers.ModelSerializer):
         user = User.objects.create(**validated_data)
         user.set_password(validated_data['password'])
         user.save()
+
         return user   
+
+        return user
+

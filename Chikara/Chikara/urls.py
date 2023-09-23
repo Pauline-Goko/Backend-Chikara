@@ -40,11 +40,19 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("limit/", include("limit.urls")),
     path("user/", include("user.urls")),
+
     path("vehicle/", include("vehicles.urls")),
     path('carbon_credits/', include ('carbon_credits.urls')),
     path("vehicle/", include("vehicles.urls")),
     path("emissions/", include("emissionsdata.urls")),
     path('docs/', schema_view.with_ui('swagger', cache_timeout=0),name='schema-swagger-ui'),
+
+    path("vehicle/", include("vehicles.urls"))
+
+
+    path("limit/", include("limit.urls") )
+
+
 ]
 
 if settings.DEBUG:
