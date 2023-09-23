@@ -1,7 +1,8 @@
 from django.test import TestCase
 from rest_framework.test import APIClient
 from rest_framework import status
-from .models import Limit
+from .models import EmissionCap
+
 from .serializers import LimitSerializers
 from django.urls import reverse
 
@@ -11,8 +12,8 @@ class LimitViewListTestCase(TestCase):
         self.url = reverse('Limit List')  
     
     def test_list_limits(self):
-        limit1 = Limit.objects.create(emission_limit=100, duration="2023-09-21T08:31:49.508380Z")
-        limit2 = Limit.objects.create(emission_limit=200, duration="2023-09-22T08:31:49.508381Z")
+        limit1 = EmissionCap.objects.create(emission_limit=100, duration="2023-09-21T08:31:49.508380Z")
+        limit2 = EmissionCap.objects.create(emission_limit=200, duration="2023-09-22T08:31:49.508381Z")
         
        
         response = self.client.get(self.url)
@@ -33,6 +34,6 @@ class LimitViewListTestCase(TestCase):
     
         response = self.client.post(self.url, data=new_limit_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        self.assertTrue(Limit.objects.filter(emission_limit=300).exists())
+        self.assertTrue(EmissionCap.objects.filter(emission_limit=300).exists())
 
 

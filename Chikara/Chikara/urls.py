@@ -19,5 +19,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("limit/", include("limit.urls") )
+    path("limit/", include("limits.urls") )
 ]

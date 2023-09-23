@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from limit.models import Limit
-from .serializers import LimitSerializers
+from limits.models import EmissionCap
+from .serializers import EmissionCapSerializers
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
@@ -8,14 +8,14 @@ from rest_framework.views import APIView
 # Create your views here.
 
 
-class LimitViewList(APIView):
+class EmissionCapViewList(APIView):
     def get(self, request):
-        limit = Limit.objects.all()
-        serializer = LimitSerializers(limit, many=True)
+        limit = EmissionCap.objects.all()
+        serializer = EmissionCapSerializers(limit, many=True)
         return Response(serializer.data)
     
     def post(self, request):
-        serializer = LimitSerializers(data=request.data)
+        serializer = EmissionCapSerializers(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
