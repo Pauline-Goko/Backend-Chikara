@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from user.models import User
+from django.contrib.auth.models import Group,Permission
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -15,4 +16,8 @@ class UserSerializer(serializers.ModelSerializer):
         user = User.objects.create(**validated_data)
         user.set_password(validated_data['password'])
         user.save()
+
+        return user   
+
         return user
+

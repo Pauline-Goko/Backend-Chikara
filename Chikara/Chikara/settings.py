@@ -36,16 +36,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'carbon_credits',
-
-    'rest_framework',
+    'rest_framework_swagger',     
+    'rest_framework',            
+    'drf_yasg',
     'vehicles',
     'limit',
+    'emissionsdata',
     'user',
-    'phonenumber_field',
     'rest_framework.authtoken',
-    'registration'
+    'phonenumber_field' 
 
 
 ]
@@ -90,8 +90,15 @@ WSGI_APPLICATION = 'Chikara.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 
+import os
+
+DATABASES = {
+     'default': {
+
+
 DATABASES = {
     'default': {
+
         'ENGINE': os.environ.get('DB_ENGINE'),
         'NAME': os.environ.get('DB_NAME'),
         'USER': os.environ.get('DB_USER'),

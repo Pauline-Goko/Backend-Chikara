@@ -57,6 +57,22 @@ class UserDetailView(APIView):
 
 @api_view(['POST'])
 def user_login_view(request):
+
+    if request.method == 'POST':
+        username = request.data.get('username')
+        password = request.data.get('password')
+        try:
+            user = User.objects.get(username=username)
+        except User.DoesNotExist:
+            return Response({'error': 'Invalid username or password'},
+                            status=status.HTTP_401_UNAUTHORIZED)
+        if user.check_password(password):
+            return Response({'message': 'Successfully logged in.'},
+                            status=status.HTTP_200_OK)
+        else:
+            return Response({'error': 'Invalid username or password'},
+                            status=status.HTTP_401_UNAUTHORIZED)
+
     username = request.data.get('username')
     password = request.data.get('password')
     try:
@@ -70,6 +86,7 @@ def user_login_view(request):
     else:
         return Response({'error': 'Invalid credentials'},
                         status=status.HTTP_401_UNAUTHORIZED)
+
 
 
 @api_view(['POST'])

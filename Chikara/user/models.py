@@ -6,7 +6,7 @@ from django.utils import timezone
 
 class User(AbstractUser):
     username = models.CharField(max_length=32, unique=True)
-    phone_number = PhoneNumberField()
+    phone_number = PhoneNumberField(help_text='Contact phone number')
     company_id = models.PositiveIntegerField(default=1)
     email = models.EmailField(unique=True)
     date_created = models.DateTimeField(timezone.now(), null=True)
