@@ -20,7 +20,7 @@ class CarbonCreditsDetail(APIView):
     def get(self, request, pk):
         carbon_credit = self.get_object(pk)
         if carbon_credit is None:
-            return Response({'error': 'CarbonCredit not found'}, status=status.HTTP_404_NOT_FOUND)
+            return Response({'error': 'CarbonCredits not found'}, status=status.HTTP_404_NOT_FOUND)
 
         serializer = CarbonCreditsSerializer(carbon_credit)
         return Response(serializer.data)
