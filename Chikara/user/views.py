@@ -57,29 +57,27 @@ class UserDetailView(APIView):
 
 @api_view(['POST'])
 def user_login_view(request):
-    if request.method == 'POST':
-        username = request.data.get('username')
-        password = request.data.get('password')
-        try:
-            user = User.objects.get(username=username)
-        except User.DoesNotExist:
-            return Response({'error': 'Invalid credentials'},
-                            status=status.HTTP_401_UNAUTHORIZED)
-        if user.check_password(password):
-            return Response({'message': 'Successfully logged in.'},
-                            status=status.HTTP_200_OK)
-        else:
-            return Response({'error': 'Invalid credentials'},
-                            status=status.HTTP_401_UNAUTHORIZED)
+    username = request.data.get('username')
+    password = request.data.get('password')
+    try:
+        user = User.objects.get(username=username)
+    except User.DoesNotExist:
+        return Response({'error': 'User with this username does not exist'},
+                        status=status.HTTP_401_UNAUTHORIZED)
+    if user.check_password(password):
+        return Response({'message': 'Successfully logged in.'},
+                        status=status.HTTP_200_OK)
+    else:
+        return Response({'error': 'Invalid credentials'},
+                        status=status.HTTP_401_UNAUTHORIZED)
 
 
 @api_view(['POST'])
 def user_registration_view(request):
-    if request.method == 'POST':
-        serializer = UserSerializer(data=request.data)
-        if serializer.is_valid():
-            user = serializer.save()
-            login(request, user)
-            return Response({'message': 'Successfully registered'},
-                            status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    serializer = UserSerializer(data=request.data)
+    if serializer.is_valid():
+        user = serializer.save()
+        login(request, user)
+        return Response({'message': 'Successfully registered'},
+                        status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
