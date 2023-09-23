@@ -15,7 +15,7 @@ class CarbonCreditsDetail(APIView):
         try:
             return CarbonCredits.objects.get(pk=pk)
         except CarbonCredits.DoesNotExist:
-            return None
+            return Response({'error': 'No CarbonCredits found '}, status=status.HTTP_404_NOT_FOUND)
 
     def get(self, request, pk):
         carbon_credit = self.get_object(pk)
@@ -30,7 +30,7 @@ class CalculateLastCarbonCredit(APIView):
            
             last_carbon_credit = CarbonCredits.objects.latest('id')
         except CarbonCredits.DoesNotExist:
-            return Response({'error': 'No CarbonCredits data found'}, status=status.HTTP_404_NOT_FOUND)
+            return Response({'error': 'No CarbonCredits  found '}, status=status.HTTP_404_NOT_FOUND)
 
         carbon_credit_value = last_carbon_credit.calculate_credits_earned()
 
