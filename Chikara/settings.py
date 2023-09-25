@@ -11,8 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
 from pathlib import Path
-
-
+import dj_database_url
 from django.conf import settings
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -45,7 +44,6 @@ INSTALLED_APPS = [
     'user',
     'phonenumber_field',
     'rest_framework.authtoken',
-    'registration',
     'emissionsdata',
     'carbon_credits'
 
@@ -92,15 +90,11 @@ WSGI_APPLICATION = 'Chikara.wsgi.application'
 
 
 DATABASES = {
-    'default': {
-        'ENGINE': os.environ.get('DB_ENGINE'),
-        'NAME': os.environ.get('DB_NAME'),
-        'USER': os.environ.get('DB_USER'),
-        'PASSWORD': os.environ.get('DB_PASSWORD'),
-        'HOST': os.environ.get('DB_HOST'),
-        'PORT': os.environ.get('DB_PORT'),
-    },
+    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
 }
+
+
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'user_images')
 MEDIA_URL = '/user_images/'
 
@@ -146,5 +140,6 @@ STATIC_ROOT = '/Chikara-Backend/staticfiles'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 import django_heroku
 django_heroku.settings(locals())
