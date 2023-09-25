@@ -1,0 +1,1 @@
+web: gunicorn Chikara.wsgi --log-file -

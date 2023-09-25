@@ -1,7 +1,6 @@
 from django.db import models
 from emissionsdata.models import EmissionsData
-from limit.models import Limit
-
+from limits.models import Limit
 
 
 class CarbonCredits(models.Model):

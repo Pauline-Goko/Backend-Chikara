@@ -1,0 +1,7 @@
+myenv/
+__pycache__/
+.env
+myenv/
+__pycache__
+staticfiles/
+/staticfiles
