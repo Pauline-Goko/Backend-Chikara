@@ -24,7 +24,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("limits/", include("limits.urls")),
     path("user/", include("user.urls")),
-    path("vehicle/", include("vehicles.urls"))
+    path("vehicle/", include("vehicles.urls")),
+    path("emissionsdata/", include("emissionsdata.urls"))
 ]
 
 if settings.DEBUG:
