@@ -1,12 +1,9 @@
 from django.contrib import admin
-from .models import EmissionCap
-
-# Register your models here.
+from .models import Limit
 
 
-class EmissionCapAdmin(admin.ModelAdmin):
+class LimitAdmin(admin.ModelAdmin):
     list_display = ("emission_limit", "duration")
-  
- 
 
-admin.site.register(EmissionCap, EmissionCapAdmin)
+
+admin.site.register(Limit, LimitAdmin)

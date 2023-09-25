@@ -37,7 +37,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'vehicles',
     'limits',
+    'user',
+    'phonenumber_field',
+    'rest_framework.authtoken',
+    'registration',
+    'emissionsdata',
+    'carbon_credits'
+
 ]
 
 MIDDLEWARE = [
@@ -80,8 +88,6 @@ WSGI_APPLICATION = 'Chikara.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 
-import os
-
 DATABASES = {
     'default': {
         'ENGINE': os.environ.get('DB_ENGINE'),
@@ -92,6 +98,8 @@ DATABASES = {
         'PORT': os.environ.get('DB_PORT'),
     },
 }
+MEDIA_ROOT = os.path.join(BASE_DIR, 'user_images')
+MEDIA_URL = '/user_images/'
 
 
 # Password validation

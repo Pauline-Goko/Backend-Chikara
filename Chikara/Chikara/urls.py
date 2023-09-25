@@ -19,7 +19,9 @@ from django.urls import path, include, settings, static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("limits/", include("limit.urls") )
+    path("limits/", include("limits.urls")),
+    path("user/", include("user.urls")),
+    path("vehicle/", include("vehicles.urls"))
 ]
 
 if settings.DEBUG:

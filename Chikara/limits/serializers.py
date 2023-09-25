@@ -1,8 +1,8 @@
 from rest_framework import serializers
-from limits.models import EmissionCap
+from .models import Limit
 
 
-class EmissionCapSerializers(serializers.ModelSerializer):
+class LimitSerializers(serializers.ModelSerializer):
     class Meta:
-        model = EmissionCap
+        model = Limit
         fields = "__all__"

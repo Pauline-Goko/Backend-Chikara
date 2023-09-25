@@ -1,10 +1,12 @@
 from django.urls import path
-from .views import user_login_view, user_registration_view, UserListView, UserDetailView
+from .views import login, logout, UserListView, UserDetailView, ProfileImageView
 # user_logout_view,
 
 urlpatterns = [
-    path('login/', user_login_view, name='user-login'),
-    path('register/', user_registration_view, name='user-registration'),
+    path('login/', login, name='user-login'),
+    path('logout/', logout, name='user-logout'),
     path('users/', UserListView.as_view(), name='user-list'),
-    path('detail/<int:id>/', UserDetailView.as_view(), name='user_detail')
+    path('details/', UserDetailView.as_view(), name='user_detail'),
+    path("upload-profile-image/", ProfileImageView.as_view(), name="upload-profile-image"),
+
 ]
