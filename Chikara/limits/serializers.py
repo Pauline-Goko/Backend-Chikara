@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from limit.models import Limit
+from .models import Limit
 
 
 class LimitSerializers(serializers.ModelSerializer):

@@ -1,4 +1,4 @@
-from limit.models import Limit
+from limits.models import Limit
 from .serializers import LimitSerializers
 from rest_framework.response import Response
 from rest_framework import status

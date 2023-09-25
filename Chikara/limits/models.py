@@ -3,7 +3,7 @@ from django.db import models
 
 class Limit(models.Model):
     emission_limit = models.IntegerField()
-    duration = models.DateTimeField()
+    duration = models.PositiveIntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
