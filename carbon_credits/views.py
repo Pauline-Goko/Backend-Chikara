@@ -4,11 +4,13 @@ from rest_framework.views import APIView
 from .models import CarbonCredits
 from .serializers import CarbonCreditsSerializer
 
+
 class CarbonCreditsList(APIView):
     def get(self, request):
         carbon_credits = CarbonCredits.objects.all()
         serializer = CarbonCreditsSerializer(carbon_credits, many=True)
         return Response(serializer.data)
+
 
 class CarbonCreditsDetail(APIView):
     def get_object(self, pk):
@@ -24,6 +26,8 @@ class CarbonCreditsDetail(APIView):
 
         serializer = CarbonCreditsSerializer(carbon_credit)
         return Response(serializer.data)
+    
+    
 class CalculateLastCarbonCredit(APIView):
     def get(self, request):
         try:
@@ -33,10 +37,7 @@ class CalculateLastCarbonCredit(APIView):
             return Response({'error': 'No CarbonCredits  found '}, status=status.HTTP_404_NOT_FOUND)
 
         carbon_credit_value = last_carbon_credit.calculate_credits_earned()
-
-      
         data = {
             'carbon_credit': carbon_credit_value
         }
-
         return Response(data)
