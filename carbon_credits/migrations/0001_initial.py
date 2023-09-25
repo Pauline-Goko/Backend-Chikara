@@ -9,8 +9,8 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('limit', '0001_initial'),
-        ('emissionsdata', '0001_initial'),
+        # ('limit', '0001_initial'),
+        # ('emissionsdata', '0001_initial'),
     ]
 
     operations = [
