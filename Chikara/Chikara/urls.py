@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, settings, static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,3 +23,6 @@ urlpatterns = [
     path("user/", include("user.urls")),
     path("vehicle/", include("vehicles.urls"))
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

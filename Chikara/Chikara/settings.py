@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     'user',
     'phonenumber_field',
     'rest_framework.authtoken',
-    'registration'
+    'registration',
+    'emissionsdata',
+    'carbon_credits'
 
 ]
 
@@ -88,27 +90,16 @@ WSGI_APPLICATION = 'Chikara.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': "ecobasi",
-        'USER': "chikara",
-        'PASSWORD': "123456",
-        'HOST': "localhost",
-        'PORT': ""
-    }
+        'ENGINE': os.environ.get('DB_ENGINE'),
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),
+        'PORT': os.environ.get('DB_PORT'),
+    },
 }
 MEDIA_ROOT = os.path.join(BASE_DIR, 'user_images')
 MEDIA_URL = '/user_images/'
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': os.environ.get('DB_ENGINE'),
-#         'NAME': os.environ.get('DB_NAME'),
-#         'USER': os.environ.get('DB_USER'),
-#         'PASSWORD': os.environ.get('DB_PASSWORD'),
-#         'HOST': os.environ.get('DB_HOST'),
-#         'PORT': os.environ.get('DB_PORT'),
-#     }
-# }
 
 
 # Password validation
