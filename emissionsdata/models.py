@@ -2,6 +2,7 @@ from django.db import models
 from vehicles.models import Vehicle
 from decimal import Decimal
 
+
 class EmissionsData(models.Model):
     vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE)
     emission_value = models.DecimalField(decimal_places=2, max_digits=14, null=True)
