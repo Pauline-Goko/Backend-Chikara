@@ -64,7 +64,10 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'rest_framework.authtoken',
     'emissionsdata',
-    'carbon_credits'
+    'carbon_credits',
+    'drf_yasg',
+    'rest_framework',
+    'rest_framework_swagger'
 
 ]
 

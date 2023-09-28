@@ -7,8 +7,6 @@ class UserAdmin(admin.ModelAdmin):
         "company_id",
         "phone_number",
         "location",
-        "image",
-        "home_image",
         "username",
         "email",
         "password",

@@ -6,7 +6,7 @@ from django.contrib.auth.models import Group,Permission
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ["id","description", 'username', 'location', 'email', 'phone_number', 'home_image','image', 'password']
+        fields = ["id","description", 'username', 'location', 'email', 'phone_number','password']
         extra_kwargs = {'password': {'write_only': True}}
 
 
