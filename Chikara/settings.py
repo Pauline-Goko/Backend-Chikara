@@ -25,6 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
+ 
 
 
 
@@ -111,7 +112,18 @@ WSGI_APPLICATION = 'Chikara.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 
-DATABASES = {'default': dj_database_url.config(default=os.environ. get('DATABASE_URL'))}                                           
+# DATABASES = {'default': dj_database_url.config(default=os.environ. get('DATABASE_URL'))}                                           
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'chikara_app',
+        'USER': 'chikara',
+        'PASSWORD': 'chikara_pass',
+        'HOST': 'localhost',
+        'PORT': '',
+    }
+}
+# export DATABASE_URL=postgres://chikara:chikara_pass@localhost:5432/chikara_app
 
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'user_images')
