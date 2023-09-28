@@ -25,7 +25,8 @@ urlpatterns = [
     path("limits/", include("limits.urls")),
     path("user/", include("user.urls")),
     path("vehicle/", include("vehicles.urls")),
-    path("emissionsdata/", include("emissionsdata.urls"))
+    path("emissionsdata/", include("emissionsdata.urls")),
+    path("credits/", include("carbon_credits.urls"))
 ]
 
 if settings.DEBUG:

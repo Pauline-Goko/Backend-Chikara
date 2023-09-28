@@ -8,10 +8,11 @@ class UserAdmin(admin.ModelAdmin):
         "phone_number",
         "location",
         "image",
+        "home_image",
         "username",
         "email",
         "password",
-        "location"
+        "description"
     )
 
 

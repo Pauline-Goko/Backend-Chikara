@@ -12,8 +12,9 @@ class EmissionsData(models.Model):
         converted_emissions = (Decimal('44.01') * Decimal(str(self.emission_value))) / Decimal('24.45')
         gas_equivalent = converted_emissions / Decimal('1000000')
         return gas_equivalent
-
+    
     def save(self, *args, **kwargs):
         self.emission_value = self.convert_emissions()
         super().save(*args, **kwargs)
-  
+
+    

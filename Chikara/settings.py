@@ -13,13 +13,19 @@ import os
 from pathlib import Path
 import dj_database_url
 from django.conf import settings
-
+from dotenv import load_dotenv
 import django_heroku
-django_heroku.settings(locals())
+
+load_dotenv()
+
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
+
+
+
 
 
 STATIC_URL = '/static/'  # Updated URL path
@@ -62,14 +68,15 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware'
 ]
+SESSION_ENGINE = "django.contrib.sessions.backends.db"
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend'
@@ -144,7 +151,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 
-
+django_heroku.settings(locals())
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
