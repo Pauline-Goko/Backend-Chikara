@@ -18,4 +18,4 @@ sqlparse==0.4.4
 typing_extensions==4.7.1
 uritemplate==4.1.1
 whitenoise==6.5.0
-corsheaders==4.2.0
+corsheaders>=3.0.0
