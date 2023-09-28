@@ -67,7 +67,7 @@ INSTALLED_APPS = [
     'emissionsdata',
     'carbon_credits',
     'drf_yasg',
-    'rest_framework_swagger'
+ 
 
 ]
 
