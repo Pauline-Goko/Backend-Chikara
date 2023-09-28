@@ -7,11 +7,10 @@ class UserAdmin(admin.ModelAdmin):
         "company_id",
         "phone_number",
         "location",
-        "image",
         "username",
         "email",
         "password",
-        "location"
+        "description"
     )
 
 

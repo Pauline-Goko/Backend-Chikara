@@ -5,9 +5,11 @@ from django.utils import timezone
 
 
 class User(AbstractUser):
+    description = models.TextField(max_length=128)
     username = models.CharField(max_length=32, unique=True)
     phone_number = PhoneNumberField(unique=True)
-    image = models.ImageField(upload_to='user_images/', default="")
+    # home_image = models.ImageField(upload_to='user_images/', null=True)
+    # image = models.ImageField(upload_to='user_images/', null=True)
     location = models.CharField(max_length=32)
     company_id = models.PositiveIntegerField(default=1)
     email = models.EmailField(unique=True)

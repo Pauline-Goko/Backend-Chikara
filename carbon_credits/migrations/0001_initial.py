@@ -9,8 +9,9 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        # ('limit', '0001_initial'),
-        # ('emissionsdata', '0001_initial'),
+        ('emissionsdata', '0001_initial'),
+        ('limits', '0001_initial'),
+      
     ]
 
     operations = [
@@ -20,7 +21,7 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('credit_earned', models.DecimalField(decimal_places=2, editable=False, max_digits=10)),
                 ('emission_data', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to='emissionsdata.emissionsdata')),
-                ('emission_limit', models.OneToOneField(null=True, on_delete=django.db.models.deletion.CASCADE, to='limit.limit')),
+                ('emission_limit', models.OneToOneField(null=True, on_delete=django.db.models.deletion.CASCADE, to='limits.limit')),
             ],
         ),
     ]

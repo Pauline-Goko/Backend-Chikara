@@ -13,9 +13,29 @@ import os
 from pathlib import Path
 import dj_database_url
 from django.conf import settings
+import django_heroku
+
+
+
+
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+
+ 
+
+
+
+
+STATIC_URL = '/static/'  # Updated URL path
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -45,19 +65,22 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'rest_framework.authtoken',
     'emissionsdata',
-    'carbon_credits'
+    'carbon_credits',
+    'drf_yasg',
+ 
 
 ]
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware'
 ]
+SESSION_ENGINE = "django.contrib.sessions.backends.db"
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend'
@@ -89,10 +112,18 @@ WSGI_APPLICATION = 'Chikara.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 
+# DATABASES = {'default': dj_database_url.config(default=os.environ. get('DATABASE_URL'))}                                           
 DATABASES = {
-    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'chikara_app',
+        'USER': 'chikara',
+        'PASSWORD': 'chikara_pass',
+        'HOST': 'localhost',
+        'PORT': '',
+    }
 }
-
+# export DATABASE_URL=postgres://chikara:chikara_pass@localhost:5432/chikara_app
 
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'user_images')
@@ -133,13 +164,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
-STATIC_ROOT = '/Chikara-Backend/staticfiles'
 
+django_heroku.settings(locals())
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-import django_heroku
-django_heroku.settings(locals())
+

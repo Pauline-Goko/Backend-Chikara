@@ -1,7 +1,6 @@
 from django.db import models
-from emissionsdata.models import EmissionsData
 from limits.models import Limit
-
+from emissionsdata.models import EmissionsData
 
 class CarbonCredits(models.Model):
     emission_data = models.OneToOneField(EmissionsData, on_delete=models.CASCADE)
