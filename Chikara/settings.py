@@ -13,10 +13,9 @@ import os
 from pathlib import Path
 import dj_database_url
 from django.conf import settings
-from dotenv import load_dotenv
 import django_heroku
 
-load_dotenv()
+
 
 
 
@@ -110,8 +109,7 @@ WSGI_APPLICATION = 'Chikara.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 
-DATABASES = {'default': dj_database_url.config(default=os.environ.
-                                               get('DATABASE_URL'))}                                           
+DATABASES = {'default': dj_database_url.config(default=os.environ. get('DATABASE_URL'))}                                           
 
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'user_images')
