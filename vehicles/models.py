@@ -1,9 +1,10 @@
 from django.db import models
 
-
 class Vehicle(models.Model):
-    number_plate = models.CharField(max_length=32)
-    engine_type = models.CharField(max_length=32)
+    year = models.PositiveIntegerField(null=True, blank=True)
+    vehicle_model = models.CharField(max_length=32,null=True)
+    chassis_number = models.CharField(max_length=32,null=True)
+    engine_type = models.CharField(max_length=32,null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
  
